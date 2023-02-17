@@ -123,39 +123,6 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
                 const SizedBox(
                   height: 20,
                 ),
-                Row(children: [
-                  Checkbox(
-                    checkColor: Colors.white,
-                    activeColor: const Color.fromRGBO(176, 41, 75, 1),
-                    fillColor: const MaterialStatePropertyAll(
-                        Color.fromRGBO(176, 41, 75, 1)),
-                    value: isChecked,
-                    onChanged: (bool? value) {
-                      setState(() {
-                        isChecked = value!;
-                      });
-                    },
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        'Согласие на хранение и обработку персональных',
-                        style: TextStyle(color: Colors.white, fontSize: 13),
-                      ),
-                      Text(
-                        'данных',
-                        style: TextStyle(color: Colors.white, fontSize: 13),
-                      ),
-                    ],
-                  ),
-                ]),
-                const SizedBox(
-                  height: 20,
-                ),
                 Container(
                   width: double.infinity,
                   height: 50,
@@ -224,5 +191,4 @@ class _RegisterScreenWidgetState extends State<RegisterScreenWidget> {
       ),
     );
   }
-
 }
