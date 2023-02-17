@@ -31,7 +31,7 @@ class MyApp extends StatelessWidget {
             const RealEstateInfoWidget(),
 
       },
-      initialRoute: '/main_screen',
+      initialRoute: '/reg',
     );
   }
 }
