@@ -55,23 +55,12 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Goodfellas'),
-        centerTitle: true,
-      ),
+      
       body: IndexedStack(
         index: _selectedTab,
         children: [
-          DecoratedBox(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.blue, Colors.green, Colors.blue],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0.2, 0.5, 0.7],
-                // tileMode: TileMode.repeated,
-              ),
-            ),
+          Container(
+            color: const Color(0xFF1A1D24),
             child: Column(
               children: [
                 const SizedBox(
@@ -81,7 +70,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
                   width: double.infinity,
                   height: 250,
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade100,
+                    color: const Color(0xFFAFB0B2),
                     border: Border.all(color: Colors.black.withOpacity(0.2)),
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     boxShadow: [
@@ -134,8 +123,8 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
                   width: double.infinity,
                   height: 400,
                   decoration: BoxDecoration(
-                    color: Colors.blue.shade100,
-                    border: Border.all(color: Colors.black.withOpacity(0.2)),
+                    color: const Color.fromRGBO(37, 40, 47, 1),
+                    border: Border.all(color: Color.fromRGBO(63, 66, 73, 1),),
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
@@ -163,7 +152,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
                                 children: [
                                   Container(
                                     decoration: BoxDecoration(
-                                      color: Colors.blue.shade100,
+                                      color: const Color(0xFFAFB0B2),
                                       border: Border.all(
                                           color: Colors.black.withOpacity(0.2)),
                                       borderRadius: const BorderRadius.all(
@@ -242,8 +231,8 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
                         width: double.infinity,
                         height: 50,
                         decoration: BoxDecoration(
-                          color: Colors.blue.shade100,
-                          border: Border.all(color: Colors.blue.shade100),
+                          color: const Color(0xFFAFB0B2),
+                          border: Border.all(color: const Color(0xFFAFB0B2)),
                           borderRadius: const BorderRadius.only(
                             topLeft: Radius.circular(20),
                             topRight: Radius.circular(20),
@@ -264,34 +253,41 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
               ],
             ),
           ),
-          DecoratedBox(
-            decoration: const BoxDecoration(
-              gradient: LinearGradient(
-                colors: [Colors.blue, Colors.green, Colors.blue],
-                begin: Alignment.topLeft,
-                end: Alignment.bottomRight,
-                stops: [0.2, 0.5, 0.7],
-                tileMode: TileMode.repeated,
-              ),
-            ),
-            child: RealEstateListWidget(),
-          ),
+          Container(color: const Color.fromRGBO(26, 29, 36, 1),child: RealEstateListWidget(),),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: _selectedTab,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money),
-            label: 'Мои инвестиции',
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.only(
+              topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+          boxShadow: [
+            BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+          ],
+        ),
+        child: ClipRRect(
+          borderRadius: const BorderRadius.only(
+            topLeft: Radius.circular(30.0),
+            topRight: Radius.circular(30.0),
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.maps_home_work),
-            label: 'Недвижимость',
-          ),
-        ],
+          child: BottomNavigationBar(
+            iconSize: 48,
+            currentIndex: _selectedTab,
+            items: [
+              const BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.home,
+                ),
+                label: '',
+              ),
+              const BottomNavigationBarItem(
+                icon: Icon(
+                  Icons.account_circle_sharp,
+                ),
+                label: '',
+              ),
+            ],
         onTap: onSelectTab,
       ),
-    );
+      ),),);
   }
 }
