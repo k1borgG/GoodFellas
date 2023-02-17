@@ -5,10 +5,6 @@ import 'authorization/register_page_widget.dart';
 import 'main_screen/main_screen_widget.dart';
 import 'real_estate_info/real_estate_info_widget.dart';
 
-
-
-
-
 void main() {
   runApp(const MyApp());
 }
@@ -21,21 +17,19 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: Colors.grey,
-          selectedItemColor: Colors.cyan,
+          selectedItemColor: Color.fromRGBO(227, 69, 69, 1),
           unselectedItemColor: Colors.black,
         ),
         primarySwatch: Colors.blue,
       ),
       routes: {
-        '/reg' :(context) => const RegisterScreenWidget(),
-        '/login':(context) => const LoginWidget(),
+        '/reg': (context) => const RegisterScreenWidget(),
+        '/login': (context) => const LoginWidget(),
         '/main_screen': (context) => const MainScreenWidget(),
         '/main_screen/real_estate_info': (context) =>
             const RealEstateInfoWidget(),
-
       },
       initialRoute: '/reg',
     );

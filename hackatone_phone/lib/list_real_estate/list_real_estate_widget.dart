@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../resources/app_images.dart';
 
-
 class RealEstate {
   final int id;
   final String imageName;
@@ -132,7 +131,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
   }
 
   final findTextFieldBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color:  Color(0xFFAFB0B2)),
+    borderSide: BorderSide(color: Color(0xFFAFB0B2)),
     borderRadius: BorderRadius.all(
       Radius.circular(15),
     ),
@@ -141,7 +140,9 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 28.0, ),
+      padding: const EdgeInsets.only(
+        top: 28.0,
+      ),
       child: Stack(
         children: [
           Padding(
@@ -149,28 +150,24 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
             child: Container(
               // height: 200,
               child: ListView.builder(
-                itemExtent: 350,
-                    // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  itemExtent: 350,
+                  // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                   padding: EdgeInsets.only(top: 70),
-                  
-                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                  
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   itemCount: _filteredEstates.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final realEstate = _filteredEstates[index ];
+                    final realEstate = _filteredEstates[index];
                     return Padding(
-                      
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
                       child: Stack(
                         children: [
                           Container(
-                            
-                            
                             decoration: BoxDecoration(
                               color: const Color(0xFFAFB0B2),
-                              border:
-                                  Border.all(color: Colors.black.withOpacity(0.2)),
+                              border: Border.all(
+                                  color: Colors.black.withOpacity(0.2)),
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(10)),
                               boxShadow: [
@@ -190,14 +187,16 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                 ),
                                 Expanded(
                                   child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       const SizedBox(
                                         height: 18,
                                       ),
                                       Text(
                                         realEstate.developer,
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
+                                        style: const TextStyle(
+                                            fontWeight: FontWeight.bold),
                                         maxLines: 1,
                                       ),
                                       const SizedBox(
@@ -205,7 +204,8 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                       ),
                                       Text(
                                         realEstate.district,
-                                        style: const TextStyle(color: Colors.blue),
+                                        style:
+                                            const TextStyle(color: Colors.blue),
                                         maxLines: 1,
                                       ),
                                       const SizedBox(
@@ -256,10 +256,15 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                           style: const TextStyle(color: Color(0xFF1A1D24)),
                           cursorColor: Color(0xFF1A1D24),
                           decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search, color: Color(0xFF1A1D24),),
+                            prefixIcon: Icon(
+                              Icons.search,
+                              color: Color(0xFF1A1D24),
+                            ),
                             contentPadding: EdgeInsets.only(top: 4),
                             hintText: 'Поиск',
-                            hintStyle: const TextStyle(color: Color(0xFF1A1D24), ),
+                            hintStyle: const TextStyle(
+                              color: Color(0xFF1A1D24),
+                            ),
                             filled: true,
                             fillColor: Color(0xFFAFB0B2),
                             border: findTextFieldBorder,
@@ -275,7 +280,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                     padding: const EdgeInsets.only(right: 8.0),
                     child: IconButton(
                       onPressed: () {},
-                      icon: const Icon(Icons.settings_suggest),
+                      icon: const Icon(Icons.sort_outlined),
                       color: Colors.white70,
                     ),
                   )

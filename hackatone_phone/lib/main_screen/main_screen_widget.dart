@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 import '../list_real_estate/list_real_estate_widget.dart';
 import '../resources/app_images.dart';
 
@@ -55,7 +54,6 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       body: IndexedStack(
         index: _selectedTab,
         children: [
@@ -124,7 +122,9 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
                   height: 400,
                   decoration: BoxDecoration(
                     color: const Color.fromRGBO(37, 40, 47, 1),
-                    border: Border.all(color: const Color.fromRGBO(63, 66, 73, 1),),
+                    border: Border.all(
+                      color: const Color.fromRGBO(63, 66, 73, 1),
+                    ),
                     borderRadius: const BorderRadius.all(Radius.circular(20)),
                     boxShadow: [
                       BoxShadow(
@@ -153,15 +153,14 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
                                   Container(
                                     decoration: BoxDecoration(
                                       color: const Color(0xFFAFB0B2),
-                                      border: Border.all(
-                                          color: Colors.black.withOpacity(0.2)),
+                                      border: Border.all(color: Colors.black),
                                       borderRadius: const BorderRadius.all(
                                           Radius.circular(10)),
                                       boxShadow: [
                                         BoxShadow(
                                           color: Colors.black.withOpacity(0.1),
+                                          offset: Offset(0, 2),
                                           blurRadius: 8,
-                                          offset: const Offset(0, 2),
                                         ),
                                       ],
                                     ),
@@ -253,14 +252,18 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
               ],
             ),
           ),
-          Container(color: const Color.fromRGBO(26, 29, 36, 1),child: RealEstateListWidget(),),
+          Container(
+            color: const Color.fromRGBO(26, 29, 36, 1),
+            child: RealEstateListWidget(),
+          ),
         ],
       ),
       bottomNavigationBar: Container(
-        
         decoration: const BoxDecoration(
           borderRadius: BorderRadius.only(
-              topRight: Radius.circular(30), topLeft: Radius.circular(30),),
+            topRight: Radius.circular(30),
+            topLeft: Radius.circular(30),
+          ),
           boxShadow: [
             BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
           ],
@@ -273,25 +276,27 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
               topRight: Radius.circular(30.0),
             ),
             child: BottomNavigationBar(
-              iconSize: 48,
+              iconSize: 30,
               currentIndex: _selectedTab,
-              items: const[
-                 BottomNavigationBarItem(
+              items: const [
+                BottomNavigationBarItem(
                   icon: Icon(
                     Icons.home,
                   ),
                   label: '',
                 ),
-               BottomNavigationBarItem(
+                BottomNavigationBarItem(
                   icon: Icon(
                     Icons.account_circle_sharp,
                   ),
                   label: '',
                 ),
               ],
-          onTap: onSelectTab,
-              ),
-              ),
-        ),),);
+              onTap: onSelectTab,
+            ),
+          ),
+        ),
+      ),
+    );
   }
 }
