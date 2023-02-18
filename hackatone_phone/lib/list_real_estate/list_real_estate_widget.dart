@@ -1,7 +1,7 @@
+
 import 'package:flutter/material.dart';
 
 import '../resources/app_images.dart';
-
 
 class RealEstate {
   final int id;
@@ -101,6 +101,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
           'Дом от лучших застройщиков Краснодара, красивый район и совр...',
     ),
   ];
+  bool flag = false;
 
   var _filteredEstates = <RealEstate>[];
 
@@ -118,6 +119,12 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
     setState(() {});
   }
 
+  void changeColor() {
+    setState(() {
+      flag = !flag;
+    });
+  }
+
   @override
   void initState() {
     super.initState();
@@ -132,7 +139,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
   }
 
   final findTextFieldBorder = const OutlineInputBorder(
-    borderSide: BorderSide(color:  Color(0xFFAFB0B2)),
+    borderSide: BorderSide(color: Color(0xFFAFB0B2)),
     borderRadius: BorderRadius.all(
       Radius.circular(15),
     ),
@@ -140,87 +147,92 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.only(top: 28.0, ),
-      child: Stack(
-        children: [
-          Padding(
+    return Stack(
+      children: [
+        Center(
+          child: Padding(
             padding: const EdgeInsets.all(2.0),
             child: Container(
-              // height: 200,
               child: ListView.builder(
-                itemExtent: 350,
-                    // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  itemExtent: 250,
+                  // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                   padding: EdgeInsets.only(top: 70),
-                  
-                  keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
-                  
+                  keyboardDismissBehavior:
+                      ScrollViewKeyboardDismissBehavior.onDrag,
                   itemCount: _filteredEstates.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final realEstate = _filteredEstates[index ];
+                    final realEstate = _filteredEstates[index];
                     return Padding(
-                      
-                      padding:
-                          const EdgeInsets.symmetric(horizontal: 30, vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 30, vertical: 10),
                       child: Stack(
                         children: [
                           Container(
-                            
-                            
                             decoration: BoxDecoration(
-                              color: const Color(0xFFAFB0B2),
-                              border:
-                                  Border.all(color: Colors.black.withOpacity(0.2)),
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(10)),
+                              color: Color.fromRGBO(26, 29, 36, 1),
+                              borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.black.withOpacity(0.1),
-                                  blurRadius: 8,
-                                  offset: const Offset(0, 0),
+                                  color: Colors.white,
+                                  blurRadius: 15,
+                                  offset: Offset(0, 4), // Shadow position
                                 ),
                               ],
                             ),
-                            clipBehavior: Clip.hardEdge,
+                            width: double.infinity,
                             child: Column(
                               children: [
-                                Image(image: AssetImage(realEstate.imageName)),
-                                const SizedBox(
-                                  width: 14,
-                                ),
-                                Expanded(
-                                  child: Column(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                    children: [
-                                      const SizedBox(
-                                        height: 18,
-                                      ),
-                                      Text(
-                                        realEstate.developer,
-                                        style: const TextStyle(fontWeight: FontWeight.bold),
-                                        maxLines: 1,
-                                      ),
-                                      const SizedBox(
-                                        height: 5,
-                                      ),
-                                      Text(
-                                        realEstate.district,
-                                        style: const TextStyle(color: Colors.blue),
-                                        maxLines: 1,
-                                      ),
-                                      const SizedBox(
-                                        height: 18,
-                                      ),
-                                      Text(
-                                        realEstate.description,
-                                        maxLines: 2,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ],
+                                ClipRRect(
+                                  borderRadius: BorderRadius.all(
+                                      Radius.elliptical(10, 10)),
+                                  child: Image(
+                                    image: AssetImage(HouseImage.image),
+                                    fit: BoxFit.cover,
+                                    height: 150,
+                                    width: double.infinity,
                                   ),
                                 ),
-                                const SizedBox(
-                                  height: 10,
+                                Padding(
+                                  padding: const EdgeInsets.only(left: 8),
+                                  child: Column(
+                                    children: [
+                                      Row(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.end,
+                                          children: [
+                                            Text(
+                                              _realEstates[index].developer,
+                                              style: TextStyle(
+                                                  fontSize: 20,
+                                                  color: Colors.white,
+                                                  fontWeight: FontWeight.bold),
+                                            ),
+                                            SizedBox(
+                                              width: 5,
+                                            ),
+                                            SizedBox(
+                                              width: 20,
+                                            ),
+                                            Text(
+                                              _realEstates[index].district,
+                                              style:
+                                                  TextStyle(color: Colors.grey),
+                                            ),
+                                          ]),
+                                      SizedBox(
+                                        height: 25,
+                                      ),
+                                      Row(
+                                        children: [
+                                          Text(
+                                            'Парковка / Школа / Детский сад',
+                                            style:
+                                                TextStyle(color: Colors.white),
+                                          )
+                                        ],
+                                      )
+                                    ],
+                                  ),
                                 ),
                               ],
                             ),
@@ -239,52 +251,57 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                   }),
             ),
           ),
-          Container(
-            height: 70,
-            color: Color(0xFF1A1D24),
-            child: Padding(
-              padding: const EdgeInsets.all(0.0),
-              child: Row(
-                // mainAxisAlignment: MainAxisAlignment.space,
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: TextField(
-                          controller: _searchController,
-                          style: const TextStyle(color: Color(0xFF1A1D24)),
-                          cursorColor: Color(0xFF1A1D24),
-                          decoration: InputDecoration(
-                            prefixIcon: Icon(Icons.search, color: Color(0xFF1A1D24),),
-                            contentPadding: EdgeInsets.only(top: 4),
-                            hintText: 'Поиск',
-                            hintStyle: const TextStyle(color: Color(0xFF1A1D24), ),
-                            filled: true,
-                            fillColor: Color(0xFFAFB0B2),
-                            border: findTextFieldBorder,
-                            disabledBorder: findTextFieldBorder,
-                            enabledBorder: findTextFieldBorder,
-                            focusedBorder: findTextFieldBorder,
+        ),
+        Container(
+          height: 70,
+          color: Color(0xFF1A1D24),
+          child: Padding(
+            padding: const EdgeInsets.all(0.0),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.space,
+              children: [
+                Expanded(
+                  child: SizedBox(
+                    child: Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: TextField(
+                        controller: _searchController,
+                        style: const TextStyle(color: Color(0xFF1A1D24)),
+                        cursorColor: Color(0xFF1A1D24),
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(
+                            Icons.search,
+                            color: Color(0xFF1A1D24),
                           ),
+                          contentPadding: EdgeInsets.only(top: 4),
+                          hintText: 'Поиск',
+                          hintStyle: const TextStyle(
+                            color: Color(0xFF1A1D24),
+                          ),
+                          filled: true,
+                          fillColor: Colors.white,
+                          border: findTextFieldBorder,
+                          disabledBorder: findTextFieldBorder,
+                          enabledBorder: findTextFieldBorder,
+                          focusedBorder: findTextFieldBorder,
                         ),
                       ),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 8.0),
-                    child: IconButton(
-                      onPressed: () {},
-                      icon: const Icon(Icons.settings_suggest),
-                      color: Colors.white70,
-                    ),
-                  )
-                ],
-              ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 8.0),
+                  child: IconButton(
+                    onPressed: () {},
+                    icon: const Icon(Icons.sort_outlined),
+                    color: Colors.white70,
+                  ),
+                )
+              ],
             ),
-          )
-        ],
-      ),
+          ),
+        )
+      ],
     );
   }
 }
