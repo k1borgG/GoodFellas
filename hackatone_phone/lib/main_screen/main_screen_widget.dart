@@ -5,11 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:hackatone_phone/profile_page/profile_page_widget.dart';
 
+import '../data2.dart';
 import '../list_real_estate/list_real_estate_widget.dart';
 import '../real_estate/both_entity.dart';
-import '../real_estate/res_complex_entity.dart';
+import '../real_estate/apartment_entity.dart';
 import '../resources/app_images.dart';
-import '../sw_templates.dart';
+
 
 class MainScreenWidget extends StatefulWidget {
   const MainScreenWidget({super.key});
@@ -33,7 +34,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     WidgetsBinding.instance?.addPostFrameCallback((_) {
       setState(() {
         allObjects =
-            both!.apartment + both!.parking + both!.commercial + both!.cottege;
+            both!.apartment;
       });
     });
   }

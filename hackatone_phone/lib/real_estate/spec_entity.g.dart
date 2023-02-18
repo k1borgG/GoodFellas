@@ -8,12 +8,14 @@ part of 'spec_entity.dart';
 
 Spec _$SpecFromJson(Map<String, dynamic> json) => Spec(
       apartSpec: json['apart_spec'] as String,
-      floors: (json['floors'] as List<dynamic>)
-          .map((e) => Floor.fromJson(e as Map<String, dynamic>))
-          .toList(),
+      apartFloor: json['apart_floor'] as String,
+      apartPrice: json['apart_price'] as int,
+      apartProfit: json['apart_profit'] as int,
     );
 
 Map<String, dynamic> _$SpecToJson(Spec instance) => <String, dynamic>{
       'apart_spec': instance.apartSpec,
-      'floors': instance.floors,
+      'apart_floor': instance.apartFloor,
+      'apart_price': instance.apartPrice,
+      'apart_profit': instance.apartProfit,
     };

@@ -43,11 +43,11 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
     // _searchController.addListener((_searchMovies));
   }
 
-  // void _onEstateTap(int index) {
-  //   // final id = _realEstates[index].id;
-  //   Navigator.of(context)
-  //       .pushNamed('/main_screen/real_estate_info', arguments: id);
-  // }
+  void _onEstateTap(int index) {
+    final id = index;
+    Navigator.of(context)
+        .pushNamed('/main_screen/real_estate_info', arguments: widget.realEstates[id]);
+  }
 
   final findTextFieldBorder = const OutlineInputBorder(
     borderSide: BorderSide(color: Color(0xFFAFB0B2)),
@@ -66,7 +66,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
             child: Container(
               child: ListView.builder(
                   itemExtent: 300,
-                  // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
+                  
                   padding: EdgeInsets.only(top: 70),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
@@ -97,7 +97,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                   borderRadius: BorderRadius.all(
                                       Radius.elliptical(10, 10)),
                                   child: Image.asset(
-                                    widget.realEstates[index].apartImg,
+                                    widget.realEstates[index].apartmentInfo.apartImg,
                                     fit: BoxFit.cover,
                                     height: 150,
                                     width: double.infinity,
@@ -116,7 +116,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                           children: [
                                             Text(
                                               widget
-                                                  .realEstates[index].apartName,
+                                                  .realEstates[index].apartmentInfo.apartName,
                                               style: TextStyle(
                                                   fontSize: 20,
                                                   color: Colors.white,
@@ -152,14 +152,14 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                               ],
                             ),
                           ),
-                          // Material(
-                          //   color: Colors.transparent,
-                          //   child: InkWell(
-                          //     borderRadius:
-                          //         const BorderRadius.all(Radius.circular(10)),
-                          //     onTap: () => _onEstateTap(index),
-                          //   ),
-                          // )
+                          Material(
+                            color: Colors.transparent,
+                            child: InkWell(
+                              borderRadius:
+                                  const BorderRadius.all(Radius.circular(10)),
+                              onTap: () => _onEstateTap(index),
+                            ),
+                          )
                         ],
                       ),
                     );

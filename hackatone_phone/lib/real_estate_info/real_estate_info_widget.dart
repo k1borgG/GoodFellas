@@ -1,11 +1,13 @@
 
-
+import '../real_estate/both_entity.dart';
 import 'package:flutter/material.dart';
+import 'package:hackatone_phone/real_estate/apartment_entity.dart';
 
 import '../resources/app_images.dart';
 
 
 class RealEstateInfoWidget extends StatefulWidget {
+  
   const RealEstateInfoWidget({super.key});
 
   @override
@@ -26,10 +28,12 @@ class _RealEstateInfoWidgetState extends State<RealEstateInfoWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final estateId = ModalRoute.of(context)!.settings.arguments;
+    
     return Scaffold(
       appBar: AppBar(backgroundColor: const Color(0xFF1A1D24),
       elevation: 0,
-      title: Text('ЖК Догма'),
+      title: Text('gjkd'),
       centerTitle: true,
       actions: [  IconButton(color: iconWasPressed == false?Colors.white: Colors.red,icon: Icon( iconWasPressed == false?Icons.favorite_border: Icons.favorite,), onPressed: () { _iconIsPressed();
         
