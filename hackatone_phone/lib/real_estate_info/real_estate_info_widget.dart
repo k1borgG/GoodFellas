@@ -89,9 +89,6 @@ class _EstateImageWidget extends StatelessWidget {
               child: 
                   const Image(image: AssetImage(HouseImage.picAppOne),fit: BoxFit.cover,),
                   
-                  
-              
-            
       ),
           ],
         ),
@@ -183,20 +180,25 @@ class _CharacterWidgetState extends State<_CharacterWidget> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.black,
-      
-      child: Padding(
-        padding: const EdgeInsets.only(bottom:12.0),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.end,
-          children: [
-            IconButton(onPressed: () =>onTap(), icon: Icon(Icons.home,color: Colors.grey, size: 30,)),
-            const SizedBox(width: 160,),
-            IconButton(onPressed: () =>onTap(), icon: Icon(Icons.account_circle_sharp,color: Colors.grey,size: 30,)),
-          ],
-        ),
+      decoration: const BoxDecoration(boxShadow: [
+              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+            ],),
+      child: Container(
+        color: Color(0xFF1A1D24),
         
+        child: Padding(
+          padding: const EdgeInsets.only(bottom:12.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              IconButton(onPressed: () =>onTap(), icon: Icon(Icons.home,color: Colors.grey, size: 30,)),
+              const SizedBox(width: 160,),
+              IconButton(onPressed: () =>onTap(), icon: Icon(Icons.account_circle_sharp,color: Colors.grey,size: 30,)),
+            ],
+          ),
+          
+        ),
       ),
     );
   }

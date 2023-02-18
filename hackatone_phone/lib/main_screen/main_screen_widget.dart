@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:hackatone_phone/profile_page/profile_page_widget.dart';
 
 
@@ -14,6 +17,22 @@ class MainScreenWidget extends StatefulWidget {
 
 class _MainScreenWidgetState extends State<MainScreenWidget> {
 
+  List list = [];
+
+Future<void> readJson() async{
+    final String response = await rootBundle.loadString('assets/sw_templates.json');
+    final data = await jsonDecode(response);
+    setState(() {
+      list = data['both'];
+    });
+  }
+
+@override
+  void initState() {
+    readJson();
+    super.initState();
+  }
+  
   
   
 int selectedTab = 0;
@@ -64,7 +83,7 @@ int selectedTab = 0;
           index: selectedTab,
           children: [
             Container(color: const Color.fromRGBO(26, 29, 36, 1),child: const RealEstateListWidget(),),
-            Container(color: Color(0xFF1A1D24), child: ProfilePageWidget()),
+            Container(color: Color(0xFF1A1D24), child:  const ProfilePageWidget()),
             
           ],
         ),

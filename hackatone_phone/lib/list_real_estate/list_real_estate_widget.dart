@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 
 import '../resources/app_images.dart';
@@ -154,7 +153,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
             padding: const EdgeInsets.all(2.0),
             child: Container(
               child: ListView.builder(
-                  itemExtent: 250,
+                  itemExtent: 300,
                   // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
                   padding: EdgeInsets.only(top: 70),
                   keyboardDismissBehavior:
@@ -169,13 +168,13 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Color.fromRGBO(26, 29, 36, 1),
+                              color: Color(0xFF1A1B30),
                               borderRadius: BorderRadius.circular(20),
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.white,
-                                  blurRadius: 15,
-                                  offset: Offset(0, 4), // Shadow position
+                                  color: Colors.black,
+                                  blurRadius: 8,
+                                  offset: Offset(4, 4), // Shadow position
                                 ),
                               ],
                             ),
@@ -196,6 +195,9 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                   padding: const EdgeInsets.only(left: 8),
                                   child: Column(
                                     children: [
+                                      SizedBox(
+                                        height: 7,
+                                      ),
                                       Row(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.end,
