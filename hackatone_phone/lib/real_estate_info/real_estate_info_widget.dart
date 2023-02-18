@@ -1,38 +1,70 @@
+
+
 import 'package:flutter/material.dart';
 
 import '../resources/app_images.dart';
 
 
-class RealEstateInfoWidget extends StatelessWidget {
+class RealEstateInfoWidget extends StatefulWidget {
   const RealEstateInfoWidget({super.key});
+
+  @override
+  State<RealEstateInfoWidget> createState() => _RealEstateInfoWidgetState();
+}
+
+class _RealEstateInfoWidgetState extends State<RealEstateInfoWidget> {
+  bool iconWasPressed = false;
+
+  void _iconIsPressed(){
+    setState(() {
+      iconWasPressed = !iconWasPressed;
+    });
+     
+  
+
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: SingleChildScrollView(
-          child: Container(
-            color: Colors.blue,
+      appBar: AppBar(backgroundColor: const Color(0xFF1A1D24),
+      elevation: 0,
+      title: Text('ЖК Догма'),
+      centerTitle: true,
+      actions: [  IconButton(color: iconWasPressed == false?Colors.white: Colors.red,icon: Icon( iconWasPressed == false?Icons.favorite_border: Icons.favorite,), onPressed: () { _iconIsPressed();
+        
+      },) ],),
+     
+      body: SafeArea(
+        minimum: EdgeInsets.zero,
+        child: Container(
+          width: double.infinity,
+          height: double.infinity,
+          color: const Color(0xFF1A1D24),
+          child: Padding(
+            padding: const EdgeInsets.only(top: 12.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+              // crossAxisAlignment: CrossAxisAlignment.center,
               children: const [
                 SizedBox(
-                  height: 30,
+                  height: 10,
                 ),
                 _EstateImageWidget(),
                 SizedBox(
-                  height: 20,
+                  height: 10,
                 ),
                 _DescriptionWidget(),
                 SizedBox(
-                  height: 20,
-                ),
+                  height: 10),
+                EstateButtonWidget(),
                 _CharacterWidget(),
+                
               ],
             ),
           ),
         ),
       ),
+      
     );
   }
 }
@@ -44,50 +76,22 @@ class _EstateImageWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(12.0),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.blue.shade100,
-          border: Border.all(color: Colors.blue.shade100),
-          borderRadius: BorderRadius.circular(20),
-        ),
-        clipBehavior: Clip.hardEdge,
-        child: Container(
-          child: Row(
-            children: [
-              Image(image: AssetImage(HouseImage.image)),
-              const SizedBox(
-                width: 14,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: const [
-                    SizedBox(
-                      height: 18,
-                    ),
-                    Text(
-                      'Бауинвестор',
-                      style: TextStyle(fontWeight: FontWeight.bold),
-                      maxLines: 1,
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'Симферопольская 134',
-                      style: TextStyle(color: Colors.blue),
-                      maxLines: 1,
-                    ),
-                  ],
-                ),
-              ),
-              const SizedBox(
-                height: 10,
-              ),
-            ],
-          ),
-        ),
+      
+        
+        child: Column(
+          children: [
+            Container(
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(15)),
+              clipBehavior: Clip.hardEdge,
+              width: double.infinity,
+              height: 250,
+              
+              child: 
+                  const Image(image: AssetImage(HouseImage.picAppOne),fit: BoxFit.cover,),
+                  
       ),
+          ],
+        ),
     );
   }
 }
@@ -103,155 +107,142 @@ class _DescriptionWidget extends StatelessWidget {
       padding: const EdgeInsets.all(12.0),
       child: Container(
         decoration: BoxDecoration(
-          color: Colors.blue.shade100,
-          border: Border.all(color: Colors.blue.shade100),
+          
+          
           borderRadius: BorderRadius.circular(20),
         ),
-        child: const Padding(
-          padding: EdgeInsets.all(10.0),
-          child: Text(
-            'Место, в которое хочется вернуться. Компания ССК представляет жилой комплекс «Дом на Московской». Уютная, уединенная территория, собственная прогулочная зона, внутренняя инфраструктура – здесь все располагает к спокойствию, счастью и состоянию полной гармонии. Жилой комплекс «Дом на Московской» представляет собой монолитный дом комфорт-класса. Здание отличается лаконичными архитектурными решениями, высоким уровнем тепло- и звукоизоляции, повышенной износостойкостью и долговечностью. Это пространство будет включать в себя места для отдыха, прогулок, общения, занятий спортом и игр, появятся красивые клумбы, аккуратные газоны, будут высажены деревья и кустарники. На первых этажах жилых зданий разместятся встроенные нежилые помещения, в которых откроются магазины, предприятия бытового обслуживания, офисы.',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 16,
-              fontWeight: FontWeight.w400,
+        child:  Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Align(
+            alignment: Alignment.centerLeft,
+            child: Row(
+              children: [
+                Expanded(
+                  child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+                    children: const[
+                    Text('Район:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('Знаменский',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    SizedBox(height: 8,),
+                    Text('Цена за кв/м:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('118.000 руб',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    SizedBox(height: 8,),
+                    Text('Количество комнат:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('2 к. кв.',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    SizedBox(height: 8,),
+                    Text('Тип :',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('Жилая',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    
+                  ],),
+                ),
+                Container(
+                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: const[
+                    Text('Количество этажей:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('12',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    SizedBox(height: 8,),
+                    Text('Доходность:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('19,2%',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    SizedBox(height: 8,),
+                    Text('Доп. цена:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                    Text('120.000 руб',style: TextStyle(fontSize: 17,color: Colors.white),),
+                    SizedBox(height: 50,)],
+                    ),
+                    
+                ),
+              ],
             ),
-          ),
+          )
         ),
       ),
     );
   }
 }
 
-class _CharacterWidget extends StatelessWidget {
+class _CharacterWidget extends StatefulWidget {
   const _CharacterWidget({
     super.key,
   });
 
   @override
+  State<_CharacterWidget> createState() => _CharacterWidgetState();
+}
+
+class _CharacterWidgetState extends State<_CharacterWidget> {
+
+  void onTap(){
+    Navigator.pop(context);
+    setState(() {
+      
+    });
+  }
+   
+  @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(12.0),
+    return Container(
+      decoration: const BoxDecoration(boxShadow: [
+              BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+            ],),
       child: Container(
-        decoration: BoxDecoration(
-          color: Colors.blue.shade100,
-          border: Border.all(color: Colors.blue.shade100),
-          borderRadius: BorderRadius.circular(20),
-        ),
+        color: Color(0xFF1A1D24),
+        
         child: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.only(bottom:12.0),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
-              Column(
-                children: const [
-                  Text(
-                    'Монолит-кирпич',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    'Тип здания',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 9),
-                  ),
-                  Text(
-                    '150 кв.м.',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    'Размер территории',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 9),
-                  )
-                ],
-              ),
-              Column(
-                children: const [
-                  Text(
-                    '3 квартал 2023',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    'Дата постройки',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 9),
-                  ),
-                  Text(
-                    'Комфорт+',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    'Класс жилья',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 9),
-                  )
-                ],
-              ),
-              Column(
-                children: const [
-                  Text(
-                    '17 этажей',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    'Этажность',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 9),
-                  ),
-                  Text(
-                    'от 130 тыс.руб.',
-                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 14),
-                  ),
-                  Text(
-                    'Стоимость',
-                    style: TextStyle(fontWeight: FontWeight.w400, fontSize: 9),
-                  )
-                ],
-              ),
+              IconButton(onPressed: () =>onTap(), icon: Icon(Icons.home,color: Colors.grey, size: 30,)),
+              const SizedBox(width: 160,),
+              IconButton(onPressed: () =>onTap(), icon: Icon(Icons.account_circle_sharp,color: Colors.grey,size: 30,)),
             ],
           ),
-          // child: Column(
-          //   crossAxisAlignment: CrossAxisAlignment.center,
-          //   children: [
-          //     Row(
-          //
-          //       children: [
-          //         Column(
-          //           children: const [
-          //
-          //           ],
-          //         ),
-          //         Column(
-          //           children: const [
-          //
-          //           ],
-          //         ),
-          //         Column(
-          //           children: const [
-          //
-          //           ],
-          //         ),
-          //       ],
-          //     ),
-          //     Row(
-          //       mainAxisAlignment: MainAxisAlignment.spaceAround,
-          //       children: [
-          //         Column(
-          //           children: const [
-          //
-          //           ],
-          //         ),
-          //         Column(
-          //           children: const [
-          //
-          //           ],
-          //         ),
-          //         Column(
-          //           children: const [
-          //
-          //           ],
-          //         ),
-          //       ],
-          //     ),
-          //   ],
-          // ),
+          
         ),
       ),
+    );
+  }
+}
+
+
+class EstateButtonWidget extends StatelessWidget {
+  const EstateButtonWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(child: Padding(padding: EdgeInsets.all(10),child: Align(alignment: Alignment.topRight,child: Container(
+                    width: 200,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      boxShadow: [
+                        BoxShadow(
+                          color: Color.fromRGBO(176, 41, 75, 1),
+                          blurRadius: 20,
+                          blurStyle: BlurStyle.normal,
+                          offset: Offset(0, 2),
+                        ),
+                      ],
+                    ),
+                    child: ElevatedButton(
+                      onPressed: (){},
+                      clipBehavior: Clip.hardEdge,
+                      style: ButtonStyle(
+                        backgroundColor: const MaterialStatePropertyAll(
+                          Color.fromRGBO(176, 41, 75, 1),
+                        ),
+                        overlayColor: const MaterialStatePropertyAll(
+                          Color.fromRGBO(176, 41, 75, 1),
+                        ),
+                        shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(10))),
+                      ),
+                      child: const Text(
+                        'Инвестировать',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),),),),
     );
   }
 }
