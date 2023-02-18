@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:hackatone_phone/profile_page/profile_page_widget.dart';
 
 import 'authorization/login_page_widget.dart';
 import 'authorization/register_page_widget.dart';
 import 'main_screen/main_screen_widget.dart';
-import 'real_estate_info/real_estate_info_widget.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,9 +18,9 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData(
         bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-          backgroundColor: Colors.grey,
-          selectedItemColor: Color.fromRGBO(227, 69, 69, 1),
-          unselectedItemColor: Colors.black,
+          backgroundColor: Color.fromRGBO(26, 29, 36, 1),
+          selectedItemColor: Colors.white,
+          unselectedItemColor: Colors.grey,
         ),
         primarySwatch: Colors.blue,
       ),
@@ -28,8 +28,7 @@ class MyApp extends StatelessWidget {
         '/reg': (context) => const RegisterScreenWidget(),
         '/login': (context) => const LoginWidget(),
         '/main_screen': (context) => const MainScreenWidget(),
-        '/main_screen/real_estate_info': (context) =>
-            const RealEstateInfoWidget(),
+        '/profile_page': (context) => const ProfilePageWidget(),
       },
       initialRoute: '/reg',
     );
