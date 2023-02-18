@@ -7,7 +7,7 @@ function TopSection() {
   return (
         <div className='top'>
             <div className='toper'>
-                <img src='images/logo.svg'></img>
+                <img src='images/Logo.jpg'></img>
                 <div className='navigation'>
                 {/* <Link to="Home" className="navbar__logo">
                     <img src="images/svg/logo.svg" alt="Logo" />
@@ -51,7 +51,7 @@ function TopSection() {
                             <option value="mango">Манго</option>
                         </select>
                         <select className='sel'>
-                            <option value="grapefruit"><div className='opt'>Грейпфрут</div></option>
+                            <option value="grapefruit"></option>
                             <option className='opt' value="lime">Лайм</option>
                             <option className='opt' value="coconut">Кокос</option>
                             <option className='opt' value="mango">Манго</option>
