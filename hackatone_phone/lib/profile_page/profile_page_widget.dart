@@ -25,25 +25,16 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(''),
-                  // Icon(
-                  //   Icons.edit,
-                  //   color: Colors.white,
-                  // ),
-                  // SizedBox(
-                  //   width: 300,
-                  // ),
+                  
                   Text('Личный кабинет', style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
                   Icon(
                     Icons.notifications,
                     color: Colors.white,
                   ),
-                  // Icon(
-                  //   Icons.settings,
-                  //   color: Colors.white,
-                  // )
+                  
                 ],
               ),
-              SizedBox(
+              const SizedBox(
                 height: 35,
               ),
               Row(
@@ -55,7 +46,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                        children: const [
                           Text(
                             'Альберт',
                             style: TextStyle(
@@ -72,12 +63,12 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 27,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
+                        children: const[
                           Icon(
                             Icons.mail_outlined,
                             color: Colors.white,
@@ -91,13 +82,13 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           ),
                         ],
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Padding(
                         padding: const EdgeInsets.only(right: 15),
                         child: Row(
-                          children: [
+                          children: const [
                             Icon(
                               Icons.phone_outlined,
                               color: Colors.white,
@@ -112,7 +103,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                           ],
                         ),
                       ),
-                      SizedBox(
+                     const SizedBox(
                         height: 12,
                       ),
                       TextButton(
@@ -121,7 +112,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
                       ),
                     ],
                   ),
-                  ClipRRect(
+                  const ClipRRect(
                     borderRadius: BorderRadius.all(Radius.circular(20)),
                     child: Image(
                       image: AssetImage(HouseImage.ProfilePagePhoto),
@@ -144,7 +135,7 @@ class _ProfilePageWidgetState extends State<ProfilePageWidget> {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.start,
-                children: [
+                children: const [
                   Icon(
                     Icons.format_list_bulleted,
                     color: Colors.white,

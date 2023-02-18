@@ -1,122 +1,33 @@
 import 'package:flutter/material.dart';
 
+import '../real_estate/both_entity.dart';
 import '../resources/app_images.dart';
 
-class RealEstate {
-  final int id;
-  final String imageName;
-  final String developer;
-  final String district;
-  final String description;
-
-  RealEstate({
-    required this.id,
-    required this.imageName,
-    required this.developer,
-    required this.district,
-    required this.description,
-  });
-}
-
 class RealEstateListWidget extends StatefulWidget {
-  const RealEstateListWidget({super.key});
-
+  List realEstates;
+  RealEstateListWidget({required this.realEstates});
   @override
   State<RealEstateListWidget> createState() => _RealEstateListWidgetState();
 }
 
 class _RealEstateListWidgetState extends State<RealEstateListWidget> {
-  final _realEstates = [
-    RealEstate(
-      id: 1,
-      imageName: HouseImage.picAppOne,
-      developer: 'Бауинвест',
-      district: 'Симферопольская 134',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 2,
-      imageName: HouseImage.picAppOne,
-      developer: 'Догма',
-      district: 'Красная 12',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 3,
-      imageName: HouseImage.picAppOne,
-      developer: 'Бауинвест',
-      district: 'Первомайская 18',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 4,
-      imageName: HouseImage.picAppOne,
-      developer: 'Догма',
-      district: 'Айвазовского 131',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 5,
-      imageName: HouseImage.picAppOne,
-      developer: 'Семья',
-      district: 'Айвазовского 131',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 6,
-      imageName: HouseImage.picAppOne,
-      developer: 'Бауинвест',
-      district: 'Айвазовского 131',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 7,
-      imageName: HouseImage.picAppOne,
-      developer: 'Догма',
-      district: 'Айвазовского 131',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 8,
-      imageName: HouseImage.picAppOne,
-      developer: 'Бауинвест',
-      district: 'Айвазовского 131',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-    RealEstate(
-      id: 9,
-      imageName: HouseImage.picAppOne,
-      developer: 'Бауинвест',
-      district: 'Айвазовского 131',
-      description:
-          'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-    ),
-  ];
   bool flag = false;
 
-  var _filteredEstates = <RealEstate>[];
+  _RealEstateListWidgetState();
 
   final _searchController = TextEditingController();
 
-  void _searchMovies() {
-    final query = _searchController.text;
-    if (query.isNotEmpty) {
-      _filteredEstates = _realEstates.where((RealEstate realEstate) {
-        return realEstate.district.toLowerCase().contains(query.toLowerCase());
-      }).toList();
-    } else {
-      _filteredEstates = _realEstates;
-    }
-    setState(() {});
-  }
+  // void _searchMovies() {
+  //   final query = _searchController.text;
+  //   if (query.isNotEmpty) {
+  //     _filteredEstates = _realEstates.where((RealEstate realEstate) {
+  //       return realEstate.district.toLowerCase().contains(query.toLowerCase());
+  //     }).toList();
+  //   } else {
+  //     _filteredEstates = _realEstates;
+  //   }
+  //   setState(() {});
+  // }
 
   void changeColor() {
     setState(() {
@@ -127,12 +38,12 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
   @override
   void initState() {
     super.initState();
-    _filteredEstates = _realEstates;
-    _searchController.addListener((_searchMovies));
+    // _filteredEstates = _realEstates;
+    // _searchController.addListener((_searchMovies));
   }
 
   void _onEstateTap(int index) {
-    final id = _realEstates[index].id;
+    final id = index;
     Navigator.of(context)
         .pushNamed('/main_screen/real_estate_info', arguments: id);
   }
@@ -154,13 +65,12 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
             child: Container(
               child: ListView.builder(
                   itemExtent: 300,
-                  // physics: BouncingScrollPhysics(parent: AlwaysScrollableScrollPhysics()),
-                  padding: EdgeInsets.only(top: 70),
+                  padding: const EdgeInsets.only(top: 70),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemCount: _filteredEstates.length,
+                  itemCount: widget.realEstates.length,
                   itemBuilder: (BuildContext context, int index) {
-                    final realEstate = _filteredEstates[index];
+                    // final realEstate = _filteredEstates[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 10),
@@ -168,9 +78,9 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: Color(0xFF1A1B30),
+                              color: const Color(0xFF1A1B30),
                               borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black,
                                   blurRadius: 8,
@@ -182,55 +92,64 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                             child: Column(
                               children: [
                                 ClipRRect(
-                                  borderRadius: BorderRadius.all(
+                                  borderRadius: const BorderRadius.all(
                                       Radius.elliptical(10, 10)),
-                                  child: Image(
-                                    image: AssetImage(HouseImage.image),
+                                  child: Image.asset(
+                                    widget.realEstates[index].apartmentInfo
+                                        .apartImg,
                                     fit: BoxFit.cover,
                                     height: 150,
                                     width: double.infinity,
                                   ),
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 8),
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 10, vertical: 5),
                                   child: Column(
                                     children: [
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 7,
                                       ),
                                       Row(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.end,
-                                          children: [
-                                            Text(
-                                              _realEstates[index].developer,
-                                              style: TextStyle(
-                                                  fontSize: 20,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
+                                        children: [
+                                          Expanded(
+                                            child: Text(
+                                              widget.realEstates[index]
+                                                  .apartmentInfo.apartName,
+                                              style: const TextStyle(
+                                                  fontSize: 15,
                                                   color: Colors.white,
                                                   fontWeight: FontWeight.bold),
                                             ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            SizedBox(
-                                              width: 20,
-                                            ),
-                                            Text(
-                                              _realEstates[index].district,
-                                              style:
-                                                  TextStyle(color: Colors.grey),
-                                            ),
-                                          ]),
-                                      SizedBox(
-                                        height: 25,
+                                          ),
+                                          Text(
+                                            widget.realEstates[index].category,
+                                            style: TextStyle(
+                                                color: Colors.grey.shade400),
+                                          )
+                                        ],
+                                      ),
+                                      const SizedBox(
+                                        height: 30,
                                       ),
                                       Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceAround,
                                         children: [
                                           Text(
-                                            'Парковка / Школа / Детский сад',
-                                            style:
-                                                TextStyle(color: Colors.white),
-                                          )
+                                            'Цена: ${widget.realEstates[index].apartmentInfo.spec.apartPrice}₽',
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 14),
+                                          ),
+                                          Text(
+                                            'Доходность: ${widget.realEstates[index].apartmentInfo.spec.apartProfit}₽',
+                                            style: const TextStyle(
+                                                color: Colors.white,
+                                                fontSize: 14),
+                                          ),
                                         ],
                                       )
                                     ],
@@ -256,7 +175,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
         ),
         Container(
           height: 70,
-          color: Color(0xFF1A1D24),
+          color: const Color(0xFF1A1D24),
           child: Padding(
             padding: const EdgeInsets.all(0.0),
             child: Row(
@@ -271,11 +190,11 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                         style: const TextStyle(color: Color(0xFF1A1D24)),
                         cursorColor: Color(0xFF1A1D24),
                         decoration: InputDecoration(
-                          prefixIcon: Icon(
+                          prefixIcon: const Icon(
                             Icons.search,
                             color: Color(0xFF1A1D24),
                           ),
-                          contentPadding: EdgeInsets.only(top: 4),
+                          contentPadding: const EdgeInsets.only(top: 4),
                           hintText: 'Поиск',
                           hintStyle: const TextStyle(
                             color: Color(0xFF1A1D24),
