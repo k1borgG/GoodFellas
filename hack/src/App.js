@@ -1,13 +1,11 @@
 import './App.css';
-import TopSection from './components/TopSection';
-import About from './components/About';
+import Blocks from './components/Blocks';
 
 
 function App() {
   return (
     <>
-      <TopSection />
-      <About />
+      <Blocks/>
     </>
   );
 }
