@@ -1,5 +1,5 @@
 
-import '../real_estate/both_entity.dart';
+
 import 'package:flutter/material.dart';
 import 'package:hackatone_phone/real_estate/apartment_entity.dart';
 
@@ -28,12 +28,12 @@ class _RealEstateInfoWidgetState extends State<RealEstateInfoWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final estateId = ModalRoute.of(context)!.settings.arguments;
+    var estate = ModalRoute.of(context)!.settings.arguments as List<dynamic>;
     
     return Scaffold(
       appBar: AppBar(backgroundColor: const Color(0xFF1A1D24),
       elevation: 0,
-      title: Text('gjkd'),
+      title: Text(estate[0]),
       centerTitle: true,
       actions: [  IconButton(color: iconWasPressed == false?Colors.white: Colors.red,icon: Icon( iconWasPressed == false?Icons.favorite_border: Icons.favorite,), onPressed: () { _iconIsPressed();
         
@@ -49,19 +49,19 @@ class _RealEstateInfoWidgetState extends State<RealEstateInfoWidget> {
             padding: const EdgeInsets.only(top: 12.0),
             child: Column(
               // crossAxisAlignment: CrossAxisAlignment.center,
-              children: const [
-                SizedBox(
+              children:  [
+                const SizedBox(
                   height: 10,
                 ),
-                _EstateImageWidget(),
-                SizedBox(
+                _EstateImageWidget(image: estate[1]),
+                const SizedBox(
                   height: 10,
                 ),
-                _DescriptionWidget(),
-                SizedBox(
+                _DescriptionWidget(estate: estate,),
+                const SizedBox(
                   height: 10),
-                EstateButtonWidget(),
-                _CharacterWidget(),
+                const EstateButtonWidget(),
+                const _CharacterWidget(),
                 
               ],
             ),
@@ -74,7 +74,8 @@ class _RealEstateInfoWidgetState extends State<RealEstateInfoWidget> {
 }
 
 class _EstateImageWidget extends StatelessWidget {
-  const _EstateImageWidget({super.key});
+  dynamic image;
+   _EstateImageWidget({required this.image,super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -91,7 +92,7 @@ class _EstateImageWidget extends StatelessWidget {
               height: 250,
               
               child: 
-                  const Image(image: AssetImage(HouseImage.picAppOne),fit: BoxFit.cover,),
+                  Image(image: AssetImage(image),fit: BoxFit.cover,),
                   
       ),
           ],
@@ -101,7 +102,9 @@ class _EstateImageWidget extends StatelessWidget {
 }
 
 class _DescriptionWidget extends StatelessWidget {
-  const _DescriptionWidget({
+  List<dynamic> estate;
+   _DescriptionWidget({
+    required this.estate,
     super.key,
   });
 
@@ -117,45 +120,38 @@ class _DescriptionWidget extends StatelessWidget {
         ),
         child:  Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Align(
-            alignment: Alignment.centerLeft,
-            child: Row(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Expanded(
+                child: Column( crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                  
+                  const Text('Цена за кв/м:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                  Text("${estate[4]}",style: TextStyle(fontSize: 17,color: Colors.white),),
+                  const SizedBox(height: 8,),
+                  const Text('Количество комнат:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                  Text(estate[2],style: TextStyle(fontSize: 17,color: Colors.white),),
+                  const SizedBox(height: 8,),
+                  const Text('Тип :',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                  Text(estate[6],style: TextStyle(fontSize: 17,color: Colors.white),),
+                  
+                ],),
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Expanded(
-                  child: Column( crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const[
-                    Text('Район:',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('Знаменский',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    SizedBox(height: 8,),
-                    Text('Цена за кв/м:',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('118.000 руб',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    SizedBox(height: 8,),
-                    Text('Количество комнат:',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('2 к. кв.',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    SizedBox(height: 8,),
-                    Text('Тип :',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('Жилая',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    
-                  ],),
+                const Text('Этажи',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                Text(estate[3],style: TextStyle(fontSize: 17,color: Colors.white),),
+                const SizedBox(height: 8,),
+                const Text('Доходность:',style: TextStyle(fontSize: 18,color: Colors.white54),),
+                Text("${estate[5]}",style: TextStyle(fontSize: 17,color: Colors.white),),
+                
+                
+                ],
                 ),
-                Container(
-                  child: Column(crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: const[
-                    Text('Количество этажей:',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('12',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    SizedBox(height: 8,),
-                    Text('Доходность:',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('19,2%',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    SizedBox(height: 8,),
-                    Text('Доп. цена:',style: TextStyle(fontSize: 18,color: Colors.white54),),
-                    Text('120.000 руб',style: TextStyle(fontSize: 17,color: Colors.white),),
-                    SizedBox(height: 50,)],
-                    ),
-                    
-                ),
-              ],
-            ),
+            ],
           )
         ),
       ),

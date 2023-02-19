@@ -45,8 +45,10 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
 
   void _onEstateTap(int index) {
     final id = index;
+    List<dynamic> realestate = [widget.realEstates[id].apartmentInfo.apartName,widget.realEstates[id].apartmentInfo.apartImg,widget.realEstates[id].apartmentInfo.spec.apartSpec,widget.realEstates[id].apartmentInfo.spec.apartFloor, widget.realEstates[id].apartmentInfo.spec.apartPrice, widget.realEstates[id].apartmentInfo.spec.apartProfit, widget.realEstates[id].category];
+    
     Navigator.of(context)
-        .pushNamed('/main_screen/real_estate_info', arguments: widget.realEstates[id]);
+        .pushNamed('/main_screen/real_estate_info', arguments: realestate);
   }
 
   final findTextFieldBorder = const OutlineInputBorder(
