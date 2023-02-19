@@ -8,6 +8,7 @@ import 'real_estate_info/real_estate_info_widget.dart';
 
 void main() {
   runApp(const MyApp());
+  WidgetsFlutterBinding.ensureInitialized();
 }
 
 class MyApp extends StatelessWidget {

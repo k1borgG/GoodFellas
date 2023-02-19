@@ -1,46 +1,41 @@
 import 'package:flutter/material.dart';
 
+import '../real_estate/apartment_entity.dart';
 import '../real_estate/both_entity.dart';
 import '../resources/app_images.dart';
-
 class RealEstateListWidget extends StatefulWidget {
-  List realEstates;
+  List<Apartment> realEstates;
   RealEstateListWidget({required this.realEstates});
   @override
   State<RealEstateListWidget> createState() => _RealEstateListWidgetState();
 }
 
 class _RealEstateListWidgetState extends State<RealEstateListWidget> {
-  bool flag = false;
+  
+  List<Apartment> filteredEstates = [];
 
-  _RealEstateListWidgetState();
-  // var _filteredEstates = <RealEstate>[];
-
+ 
   final _searchController = TextEditingController();
 
-  // void _searchMovies() {
-  //   final query = _searchController.text;
-  //   if (query.isNotEmpty) {
-  //     _filteredEstates = _realEstates.where((RealEstate realEstate) {
-  //       return realEstate.district.toLowerCase().contains(query.toLowerCase());
-  //     }).toList();
-  //   } else {
-  //     _filteredEstates = _realEstates;
-  //   }
-  //   setState(() {});
-  // }
-
-  void changeColor() {
-    setState(() {
-      flag = !flag;
-    });
+  void _searchEstates() {
+    final query = _searchController.text;
+    if (query.isNotEmpty) {
+      filteredEstates = widget.realEstates.where((Apartment realEstate) {
+        return realEstate.apartmentInfo.apartName.toLowerCase().contains(query.toLowerCase());
+      }).toList();
+    } else {
+      filteredEstates = widget.realEstates;
+    }
+    setState(() {});
   }
 
+
   @override
-  void initState() {
+  void initState () { 
+    _searchController.addListener((_searchEstates));
+    filteredEstates = widget.realEstates;
     super.initState();
-    // _filteredEstates = _realEstates;
-    // _searchController.addListener((_searchMovies));
+    
   }
 
   void _onEstateTap(int index) {
@@ -72,9 +67,9 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                   padding: EdgeInsets.only(top: 70),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
-                  itemCount: widget.realEstates.length,
+                  itemCount: filteredEstates.length,
                   itemBuilder: (BuildContext context, int index) {
-                    // final realEstate = _filteredEstates[index];
+                    final realEstate = filteredEstates[index];
                     return Padding(
                       padding: const EdgeInsets.symmetric(
                           horizontal: 30, vertical: 10),
@@ -99,7 +94,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                   borderRadius: const BorderRadius.all(
                                       Radius.elliptical(10, 10)),
                                   child: Image.asset(
-                                    widget.realEstates[index].apartmentInfo
+                                    realEstate.apartmentInfo
                                         .apartImg,
                                     fit: BoxFit.cover,
                                     height: 150,
@@ -120,7 +115,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                         children: [
                                           Expanded(
                                             child: Text(
-                                              widget.realEstates[index]
+                                              realEstate
                                                   .apartmentInfo.apartName,
                                               style: const TextStyle(
                                                   fontSize: 15,
@@ -129,7 +124,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                             ),
                                           ),
                                           Text(
-                                            widget.realEstates[index].category,
+                                            realEstate.category,
                                             style: TextStyle(
                                                 color: Colors.grey.shade400),
                                           )
@@ -143,13 +138,13 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                                             MainAxisAlignment.spaceAround,
                                         children: [
                                           Text(
-                                            'Цена: ${widget.realEstates[index].apartmentInfo.spec.apartPrice}₽',
+                                            'Цена: ${realEstate.apartmentInfo.spec.apartPrice}₽',
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 14),
                                           ),
                                           Text(
-                                            'Доходность: ${widget.realEstates[index].apartmentInfo.spec.apartProfit}₽',
+                                            'Доходность: ${realEstate.apartmentInfo.spec.apartProfit}₽',
                                             style: const TextStyle(
                                                 color: Colors.white,
                                                 fontSize: 14),
@@ -193,6 +188,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                         controller: _searchController,
                         style: const TextStyle(color: Color(0xFF1A1D24)),
                         cursorColor: Color(0xFF1A1D24),
+                        
                         decoration: InputDecoration(
                           prefixIcon: const Icon(
                             Icons.search,

@@ -25,7 +25,7 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     final json = jsonDecode(jsonString);
     both = Both.fromJson(json);
   }
-
+  
   List<Apartment> allObjects = [];
   @override
   void initState() {
@@ -47,37 +47,6 @@ class _MainScreenWidgetState extends State<MainScreenWidget> {
     });
   }
 
-  // void _onEstateTap(int index) {
-  //   final id = _myEstates[index].id;
-  //   Navigator.of(context).pushNamed('/main_screen/estate_info', arguments: id);
-  // }
-
-  // final _myEstates = [
-  //   RealEstate(
-  //     id: 1,
-  //     imageName: HouseImage.image,
-  //     developer: 'Бауинвест',
-  //     district: 'Симферопольская 134',
-  //     description:
-  //         'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-  //   ),
-  //   RealEstate(
-  //     id: 1,
-  //     imageName: HouseImage.image,
-  //     developer: 'Бауинвест',
-  //     district: 'Симферопольская 134',
-  //     description:
-  //         'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-  //   ),
-  //   RealEstate(
-  //     id: 1,
-  //     imageName: HouseImage.image,
-  //     developer: 'Бауинвест',
-  //     district: 'Симферопольская 134',
-  //     description:
-  //         'Дом от лучших застройщиков Краснодара, красивый район и совр...',
-  //   ),
-  // ];
 
   @override
   Widget build(BuildContext context) {
