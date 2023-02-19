@@ -6,21 +6,17 @@ import {
 } from "react-router-dom";
 import "./index.css";
 import App from './routes/App';
-import Catalog from "./routes/Catalog";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <App/>
-  },
-  {
-    path: "/catalog",
-    element: <Catalog/>
+    element: <App/>,
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")).render(
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );

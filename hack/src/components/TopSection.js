@@ -40,9 +40,11 @@ function TopSection() {
                             <option className='opt' value="mango">Манго</option>
                         </select>
                     </div>
-                    <button className='but'>
-                        <div className='bt_name'>Найти</div>
-                    </button>  
+                    <a href="/catalog">
+                        <button className='but'>
+                            <div className='bt_name'>Найти</div>
+                        </button>  
+                    </a>
                 </div>
             </div>
         </div>
