@@ -84,7 +84,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                             decoration: BoxDecoration(
                               color: Color(0xFF1A1B30),
                               borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
+                              boxShadow: const [
                                 BoxShadow(
                                   color: Colors.black,
                                   blurRadius: 8,
@@ -217,7 +217,13 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
                   child: IconButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      showBottomSheet(context: context, 
+                      builder: (BuildContext context){
+                        return Container(color: Color(0xFF1A1D24));
+                        }
+                        );
+                        },
                     icon: const Icon(Icons.sort_outlined),
                     color: Colors.white70,
                   ),
