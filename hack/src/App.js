@@ -1,11 +1,18 @@
 import './App.css';
-import Blocks from './components/Blocks';
-
+import HeadSection from './components/HeadSection';
+import About from './components/About';
+import Recomend from './components/Recomend';
+import FooterSection from './components/FooterSection';
+import Catalog from './components/Catalog';
 
 function App() {
   return (
     <>
-      <Blocks/>
+      <Catalog />
+      {/* <HeadSection />
+      <About />
+      <Recomend />
+      <FooterSection /> */}
     </>
   );
 }

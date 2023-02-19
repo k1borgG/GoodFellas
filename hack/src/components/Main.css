@@ -1,0 +1,88 @@
+.inp {
+    width: 822px;
+    height: 54px;
+    background: #F6F6F6;
+    opacity: 0.65;
+    border-radius: 2px;
+}
+input {
+    font-family: 'Open Sans';
+font-style:inherit;
+font-weight: 400;
+font-size: 18px;
+line-height: 25px;
+/* identical to box height */
+color: #000000;
+}
+.pois_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 44px;
+    width: 1007px;
+    height: 246px;
+    margin-left: 296px;
+
+}
+.container_main{
+    width: 1600px;
+    height: 1880px;
+    background: #FFFFFF;
+}
+.vibor{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0px;
+    gap: 40px;
+
+    width: 1007px;
+    height: 148px;
+}
+.categoria {
+    display: flex;
+flex-direction: row;
+justify-content: space-between;
+padding: 0px;
+gap: 46px;
+
+width: 1007px;
+height: 47px;
+
+border-radius: 2px;
+}
+.sell {
+    display: flex;
+flex-direction: row;
+align-items: flex-start;
+padding: 11px 55px;
+gap: 10px;
+
+width: 217.25px;
+height: 47px;
+
+background: rgba(241, 241, 241, 0.65);
+border-radius: 2px;
+}
+.buttt{
+    display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+padding: 11px 55px;
+gap: 10px;
+
+width: 217.25px;
+height: 47px;
+
+background: rgba(224, 43, 43, 0.87);
+border-radius: 3px;
+}
+.wr {
+display: flex;
+   flex-wrap: wrap;
+   justify-content: space-around;
+   width: 1450px;
+   margin: 15px auto;
+}

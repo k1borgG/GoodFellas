@@ -6,23 +6,6 @@ import './TopSection.css';
 function TopSection() {
   return (
         <div className='top'>
-            <div className='toper'>
-                <img src='images/logo.svg'></img>
-                <div className='navigation'>
-                {/* <Link to="Home" className="navbar__logo">
-                    <img src="images/svg/logo.svg" alt="Logo" />
-                </Link> */}
-                    <a className='nav_item'>Главная</a>
-                    <a className='nav_item'>О компании</a>
-                    <a className='nav_item'>Инвестиции</a>
-                    <a className='nav_item'>Контакты</a>
-                </div>
-                <div className='profile'>
-                    <img src='images/Profile.svg'></img>
-                    <a className='nav_item_2'>Вход</a>
-                    <a className='nav_item_2'>Регистрация</a>
-                </div>
-            </div>
             <div className='offer'>
                 <div className='info'>
                     <a className='zagalovok'>Инвестируй с GoodFellas</a>
@@ -51,7 +34,7 @@ function TopSection() {
                             <option value="mango">Манго</option>
                         </select>
                         <select className='sel'>
-                            <option value="grapefruit"><div className='opt'>Грейпфрут</div></option>
+                            <option value="grapefruit"></option>
                             <option className='opt' value="lime">Лайм</option>
                             <option className='opt' value="coconut">Кокос</option>
                             <option className='opt' value="mango">Манго</option>

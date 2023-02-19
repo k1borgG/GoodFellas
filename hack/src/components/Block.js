@@ -3,22 +3,13 @@ import React from 'react';
 function Block(key) {
     return (
         <div className='block'>
-            <img src=""/>
-            <div className='block_geo'>
+            {/* <img src="images/picture_2.jpeg"/> */}
+            <div className='block_JK'>
                 name: {key['apart_name']}
             </div>
-            <div className='block_year'>
-                Год: 
-            </div>
-            <div className='block_cost'>
-                Цена: 
-            </div>
-            <div className='block_profit'>
-                Доходность:
-            </div>
-            <div className='block_recom'>
-                Рекомендуемая цена акции:
-            </div>
+            {/* <div className='block_cost'>
+                cost: {key['specs.floors.apart_price']}
+            </div> */}
         </div>
     );
 }
