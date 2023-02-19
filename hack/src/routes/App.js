@@ -3,14 +3,12 @@ import HeadSection from '../components/HeadSection';
 import About from '../components/About';
 import Recomend from '../components/Recomend';
 import FooterSection from '../components/FooterSection';
-import Catalog from './Catalog';
-
 function App() {
   return (
-    <><HeadSection />
-      <About />
-      <Recomend />
-      <FooterSection /> 
+    <><HeadSection id="1"/>
+      <About id="2"/>
+      <Recomend id="3"/>
+      <FooterSection id="4"/> 
     </>
   );
 }
