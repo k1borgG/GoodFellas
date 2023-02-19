@@ -14,6 +14,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
   bool flag = false;
 
   _RealEstateListWidgetState();
+  // var _filteredEstates = <RealEstate>[];
 
   final _searchController = TextEditingController();
 
@@ -44,8 +45,31 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
 
   void _onEstateTap(int index) {
     final id = index;
+    List<dynamic> realestate = [
+      widget.realEstates[id].apartmentInfo.apartName,
+      widget.realEstates[id].apartmentInfo.apartImg,
+      widget.realEstates[id].apartmentInfo.spec.apartSpec,
+      widget.realEstates[id].apartmentInfo.spec.apartFloor,
+      widget.realEstates[id].apartmentInfo.spec.apartPrice,
+      widget.realEstates[id].apartmentInfo.spec.apartProfit,
+      widget.realEstates[id].category
+    ];
+
     Navigator.of(context)
-        .pushNamed('/main_screen/real_estate_info', arguments: id);
+        .pushNamed('/main_screen/real_estate_info', arguments: realestate);
+  }
+
+  void displayBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+        context: context,
+        builder: (ctx) {
+          return Container(
+            height: MediaQuery.of(context).size.height * 2,
+            child: Center(
+              child: Text("Welcome to AndroidVille!"),
+            ),
+          );
+        });
   }
 
   final findTextFieldBorder = const OutlineInputBorder(
@@ -65,7 +89,7 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
             child: Container(
               child: ListView.builder(
                   itemExtent: 300,
-                  padding: const EdgeInsets.only(top: 70),
+                  padding: EdgeInsets.only(top: 70),
                   keyboardDismissBehavior:
                       ScrollViewKeyboardDismissBehavior.onDrag,
                   itemCount: widget.realEstates.length,
@@ -78,9 +102,9 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                         children: [
                           Container(
                             decoration: BoxDecoration(
-                              color: const Color(0xFF1A1B30),
+                              color: Color(0xFF1A1B30),
                               borderRadius: BorderRadius.circular(20),
-                              boxShadow: const [
+                              boxShadow: [
                                 BoxShadow(
                                   color: Colors.black,
                                   blurRadius: 8,
@@ -212,10 +236,12 @@ class _RealEstateListWidgetState extends State<RealEstateListWidget> {
                 ),
                 Padding(
                   padding: const EdgeInsets.only(right: 8.0),
-                  child: IconButton(
-                    onPressed: () {},
-                    icon: const Icon(Icons.sort_outlined),
-                    color: Colors.white70,
+                  child: FloatingActionButton(
+                    backgroundColor: Colors.white70,
+                    onPressed: () => displayBottomSheet(context),
+                    child: Icon(
+                      Icons.sort,
+                    ),
                   ),
                 )
               ],

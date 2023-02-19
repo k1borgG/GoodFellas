@@ -4545,8 +4545,8 @@ const jsonString = ''' {
       "spec": {
         "apart_spec": "1 к. кв.",
         "apart_floor": "1-8",
-        "apart_price": 101000,
-        "apart_profit": 10099
+        "apart_price": 101000000,
+        "apart_profit": 10099000
       }
     }
   },
@@ -4558,8 +4558,8 @@ const jsonString = ''' {
       "spec": {
         "apart_spec": "1 к. кв.",
         "apart_floor": "1-8",
-        "apart_price": 109000,
-        "apart_profit": 10880
+        "apart_price": 109000000,
+        "apart_profit": 10898000
       }
     }
   },
@@ -4584,8 +4584,8 @@ const jsonString = ''' {
       "spec": {
         "apart_spec": "1 к. кв.",
         "apart_floor": "1,8",
-        "apart_price": 910000,
-        "apart_profit": 9090
+        "apart_price": 91000000,
+        "apart_profit": 9099000
       }
     }
   },
@@ -4597,8 +4597,8 @@ const jsonString = ''' {
       "spec": {
         "apart_spec": "1 к. кв.",
         "apart_floor": "2-7",
-        "apart_price": 94000,
-        "apart_profit": 9400
+        "apart_price": 94000000,
+        "apart_profit": 9403000
       }
     }
   },
@@ -4610,8 +4610,8 @@ const jsonString = ''' {
       "spec": {
         "apart_spec": "1 к. кв.",
         "apart_floor": "1-8",
-        "apart_price": 102000,
-        "apart_profit": 10200
+        "apart_price": 102000000,
+        "apart_profit": 10205000
       }
     }
   },
@@ -4623,8 +4623,8 @@ const jsonString = ''' {
       "spec": {
         "apart_spec": "2 к. кв.",
         "apart_floor": "1-8",
-        "apart_price": 92000,
-        "apart_profit": 900
+        "apart_price": 92000000,
+        "apart_profit": 9200000
       }
     }
   },
