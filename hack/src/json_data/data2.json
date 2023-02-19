@@ -4824,19 +4824,6 @@
     }
   },
   {
-    "category": "Коттедж",
-    "apartment_info": {
-      "apart_name": "Земельные участки проекта «Белая дача",
-      "apart_img": "images/cott_1.jpg",
-      "spec": {
-        "apart_spec": "Земельный участок с к/н 23:43:0415001:3028; ул.",
-        "apart_floor": "участок",
-        "apart_price": 15000000,
-        "apart_profit": 100000
-      }
-    }
-  },
-  {
     "category": "Парковка",
     "apartment_info": {
       "apart_name": "Парковки",

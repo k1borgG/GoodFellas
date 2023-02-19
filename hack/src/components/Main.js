@@ -58,28 +58,23 @@ function Main() {
                 <div className='vibor'>
                     <div className='categoria'>
                         <select className='sell'>
-                            <option className='opt' value="grapefruit">Грейпфрут</option>
-                            <option className='opt' value="lime">Лайм</option>
-                            <option className='opt' value="coconut">Кокос</option>
-                            <option className='opt' value="mango">Манго</option>
+                            <option className='opt' value="grapefruit">Тип</option>
+                            <option className='opt' value="lime">Жилое</option>
+                            <option className='opt' value="coconut">Коммерция</option>
+                            <option className='opt' value="mango">Коттедж</option>
+                            <option className='opt' value="mango">Парковки</option>
                         </select>
                         <select className='sell'>
-                            <option className='opt' value="grapefruit">Грейпфрут</option>
-                            <option className='opt' value="lime">Лайм</option>
-                            <option className='opt' value="coconut">Кокос</option>
-                            <option className='opt' value="mango">Манго</option>
+                            <option className='opt' value="grapefruit">Цена</option>
+                            <option className='opt' value="lime">$</option>
+                            <option className='opt' value="coconut">$$</option>
+                            <option className='opt' value="mango">$$$</option>
                         </select>
                         <select className='sell'>
-                            <option className='opt' value="grapefruit">Грейпфрут</option>
-                            <option className='opt' value="lime">Лайм</option>
-                            <option className='opt' value="coconut">Кокос</option>
-                            <option className='opt' value="mango">Манго</option>
-                        </select>
-                        <select className='sell'>
-                            <option className='opt' value="grapefruit">Грейпфрут</option>
-                            <option className='opt' value="lime">Лайм</option>
-                            <option className='opt' value="coconut">Кокос</option>
-                            <option className='opt' value="mango">Манго</option>
+                            <option className='opt' value="grapefruit">Доходность</option>
+                            <option className='opt' value="lime">0-5%</option>
+                            <option className='opt' value="coconut">6-15%</option>
+                            <option className='opt' value="mango">больше 15%</option>
                         </select>
                     </div>
                 </div>

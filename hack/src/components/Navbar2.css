@@ -15,7 +15,7 @@
     width: 490px;
     height: 25px;
 }
-.nav_item {
+.nav_item_bl {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 400;
@@ -23,7 +23,7 @@
     line-height: 25px;
     color: #000000;
 }
-.nav_item_2 {
+.nav_item_2bl {
     font-family: 'Open Sans';
     font-style: normal;
     font-weight: 600;
