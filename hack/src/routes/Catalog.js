@@ -1,6 +1,6 @@
 import React from 'react';
-import Navbar2  from './Navbar2';
-import Main from './Main';
+import Navbar2  from '../components/Navbar2';
+import Main from '../components/Main';
 //import './Catalog.css';
 
 function Catalog() {
